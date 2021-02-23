@@ -1,0 +1,107 @@
+{
+  "name": "php-intellisense-codeigniter",
+  "displayName": "php-intellisense-codeigniter",
+  "description": "Intellisense for Codeigniter projects.",
+  "author": "Ade Reksi Susanto",
+  "publisher": "adereksisusanto",
+  "version": "0.0.1",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.53.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "PHP",
+    "codeigniter"
+  ],
+  "icon": "assets/ci.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adereksisusanto/vscode-php-intellisense-codeigniter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adereksisusanto/vscode-php-intellisense-codeigniter/issues"
+  },
+  "activationEvents": [
+    "onLanguage:php"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "CI autoload",
+      "properties": {
+        "CI.ignoreSymbols": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set true if you are using other extension to display symbols, deal with $this, and static vars."
+        },
+        "CI.model": {
+          "type": [
+            "array",
+            "object"
+          ],
+          "default": [],
+          "description": "Auto load models. Eg: ['user/account'] or {'whatilike':'Ori_model'} for alisa"
+        },
+        "CI.library": {
+          "type": [
+            "array",
+            "object"
+          ],
+          "default": [],
+          "description": "Auto load library. Eg: ['user','foo/account'] or {'whatilike':'Ori_library'} for alisa"
+        },
+        "CI.other": {
+          "type": "array",
+          "default": [
+            "system/core/Common.php"
+          ],
+          "description": "Path of files that need parse. That is just for addition const support."
+        },
+        "CI.system": {
+          "type": "string",
+          "default": "system",
+          "description": "Path of CI's system folder."
+        },
+        "CI.app": {
+          "type": "string",
+          "default": "application",
+          "description": "Path of CI's application folder."
+        },
+        "CI.viewFilesFormat": {
+          "type": "string",
+          "default": "php",
+          "description": "File format of view files. Eg: php or tpl or twig"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "extension.refreshModel",
+        "title": "CI: refresh Model"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.53.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^7.0.0"
+  }
+}
